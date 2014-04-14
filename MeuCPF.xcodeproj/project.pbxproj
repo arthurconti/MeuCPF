@@ -1493,10 +1493,10 @@
 		31BAB1D618AD3F8800B5D2E8 /* MeuCPF */ = {
 			isa = PBXGroup;
 			children = (
-				31443AFB18FC781000E8A31E /* ZXingObjC */,
 				310D596118ED9AB300C02B88 /* Main.storyboard */,
-				31987A2C18D5FE6700965134 /* GoogleAdMobAdsSdkiOS-6.8.0 */,
 				31F07B5B18B4293E008421BC /* Classes */,
+				31987A2C18D5FE6700965134 /* GoogleAdMobAdsSdkiOS-6.8.0 */,
+				31443AFB18FC781000E8A31E /* ZXingObjC */,
 				31BAB1E818AD3F8800B5D2E8 /* Images.xcassets */,
 				31BAB1D718AD3F8800B5D2E8 /* Supporting Files */,
 			);

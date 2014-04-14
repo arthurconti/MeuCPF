@@ -229,7 +229,7 @@
                                 <rect key="frame" x="0.0" y="161" width="320" height="245"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" patternImage="627F77EF-AB66-40E3-AAF9-7216C20961DF" colorSpace="pattern"/>
+                                <color key="tintColor" patternImage="3F07872F-E643-4819-8710-638E6D5EF77E" colorSpace="pattern"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -288,7 +288,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="627F77EF-AB66-40E3-AAF9-7216C20961DF" width="320" height="460">
+        <image name="3F07872F-E643-4819-8710-638E6D5EF77E" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
