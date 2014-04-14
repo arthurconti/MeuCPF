@@ -13,13 +13,9 @@
 @class GADBannerView;
 @class GADRequest;
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,ADBannerViewDelegate, GADBannerViewDelegate,NSURLConnectionDataDelegate>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,ADBannerViewDelegate, GADBannerViewDelegate>
 
 @property(nonatomic, strong) GADBannerView *adBanner;
-
-@property (nonatomic) NSMutableData *imageData;
-@property (nonatomic) NSUInteger totalBytes;
-@property (nonatomic) NSUInteger receivedBytes;
 
 - (GADRequest *)request;
 

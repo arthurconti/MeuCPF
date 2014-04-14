@@ -15,7 +15,6 @@
 @interface ViewController ()
 @property int alertType;
 @property (nonatomic, strong) NSMutableArray *cpfs;
-@property (nonatomic, strong) NSMutableArray *barImgs;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UILabel *lblVazio;
 @property (weak, nonatomic) IBOutlet UILabel *lblCadastrados;
@@ -36,10 +35,6 @@ const int MAXLENGTHCPF = 11;
     return _cpfs;
 }
 
-- (NSMutableArray *) barImgs{
-    if(!_barImgs) _barImgs = [[NSMutableArray alloc] init];
-    return _barImgs;
-}
 
 -(void) viewDidLoad{
     // Initialize the banner at the bottom of the screen.
@@ -121,13 +116,6 @@ const int MAXLENGTHCPF = 11;
     }
     else{
         self.cpfs = [[NSMutableArray alloc]init];
-    }
-    
-    if(tempArray2){
-        self.barImgs = [tempArray2 mutableCopy];
-    }
-    else{
-        self.barImgs = [[NSMutableArray alloc]init];
     }
     
     [self updateUI];
@@ -285,10 +273,8 @@ const int MAXLENGTHCPF = 11;
         case 6:
             if(buttonIndex!=0){
                 self.cpfs = nil;
-                self.barImgs = nil;
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:nil forKey:@"CPFS_RECORDED"];
-                [defaults setObject:nil forKey:@"CPF_IMAGES"];
                 [defaults synchronize];
             }
             break;
@@ -298,73 +284,12 @@ const int MAXLENGTHCPF = 11;
 
 //add to arrays the valid CPF
 - (void) addValidCPF:(NSString *) txt{
-    self.cpfTyped = txt;
-    
-    self.alertview = [[UIAlertView alloc] initWithTitle:nil
-                                                message:@"Carregando CPF..."
-                                               delegate:self
-                                      cancelButtonTitle:nil
-                                      otherButtonTitles:nil];
-    [self.alertview show];
-    
-    NSString *url = @"http://barcode.tec-it.com/barcode.ashx?code=Code128&modulewidth=0.4&unit=mm&data=%@&dpi=200&imagetype=gif&rotation=0&color=&bgcolor=&fontcolor=&quiet=4&qunit=mm";
-    NSString *urlimg = [NSString stringWithFormat:url,txt];
-    NSURLRequest* updateRequest = [NSURLRequest requestWithURL: [NSURL URLWithString:urlimg]];
-    
-    NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:updateRequest  delegate:self startImmediately:YES];
-    
-    [connection start];
-    
-    //    NSString *url = @"http://www.barcodesinc.com/generator/image.php?code=%@&style=197&type=C128A&width=350&height=200&xres=2&font=3";
-    //    NSString *url = @"http://www.codebarre.be/phpbarcode/barcode.php?code=%@00&encoding=EAN&scale=4&mode=png";
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [self.cpfs addObject:txt];
+    [defaults setObject:self.cpfs forKey:@"CPFS_RECORDED"];
+    [defaults synchronize];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-    NSDictionary *dict = httpResponse.allHeaderFields;
-    NSString *lengthString = [dict valueForKey:@"Content-Length"];
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    NSNumber *length = [formatter numberFromString:lengthString];
-    self.totalBytes = length.unsignedIntegerValue;
-    
-    self.imageData = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [self.imageData appendData:data];
-    self.receivedBytes += data.length;
-    
-    // Actual progress is self.receivedBytes / self.totalBytes
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    UIImage *img = [UIImage imageWithData:self.imageData];
-    if(img!=nil){
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [self.cpfs addObject:self.cpfTyped];
-        [self.barImgs addObject:UIImagePNGRepresentation(img)];
-        [defaults setObject:self.barImgs forKey:@"CPF_IMAGES"];
-        [defaults setObject:self.cpfs forKey:@"CPFS_RECORDED"];
-        [defaults synchronize];
-        
-        [self.alertview dismissWithClickedButtonIndex:0 animated:YES];
-    }
-    
-}
-
--(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    [self.alertview dismissWithClickedButtonIndex:0 animated:YES];
-    [[[UIAlertView alloc] initWithTitle:@"Erro ao salvar CPF"
-                                                message:@"Verifique se sua conexão está funcionando corretamente!"
-                                               delegate:self
-                                      cancelButtonTitle:@"OK"
-                                      otherButtonTitles:nil]show];
-    NSLog(@"%@" , error);
-}
 
 
 //Creates tableview content
@@ -461,21 +386,5 @@ const int MAXLENGTHCPF = 11;
     return cpfFormatado;
 }
 
-
-// ---iAd implementation---
-
-//- (void) bannerViewDidLoadAd:(ADBannerView *)banner{
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:1];
-//    [banner setAlpha:1];
-//    [UIView commitAnimations];
-//}
-//
-//-(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:1];
-//    [banner setAlpha:0];
-//    [UIView commitAnimations];
-//}
 
 @end

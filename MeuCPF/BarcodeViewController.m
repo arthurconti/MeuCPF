@@ -25,11 +25,6 @@
 
 @synthesize index;
 
-- (NSMutableArray *) barImgs{
-    if(!_barImgs) _barImgs = [[NSMutableArray alloc] init];
-    return _barImgs;
-}
-
 - (IBAction)deleteCPF:(id)sender {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Apagar CPF"
                                                     message:@"Tem certeza que deseja apagar esse CPF?"
@@ -42,10 +37,8 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if(buttonIndex!=0){
         [self.cpfs removeObject:[self.cpfs objectAtIndex:index]];
-        [self.barImgs removeObject:[self.barImgs objectAtIndex:index]];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:self.cpfs forKey:@"CPFS_RECORDED"];
-        [defaults setObject:self.barImgs forKey:@"CPF_IMAGES"];
         [defaults synchronize];
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -55,9 +48,7 @@
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    self.cpfs = nil;
     NSArray *tempArray = [defaults objectForKey:@"CPFS_RECORDED"];
-    NSArray *temp2Array = [defaults objectForKey:@"CPF_IMAGES"];
     
     if (tempArray) {
         self.cpfs = [tempArray mutableCopy];
@@ -65,23 +56,10 @@
         self.cpfs = [[NSMutableArray alloc] init];
     }
     
-    if(temp2Array){
-        self.barImgs = [temp2Array mutableCopy];
-    }
-    else {
-        self.barImgs = [[NSMutableArray alloc] initWithCapacity:20];
-    }
-    
-    if(self.barImgs.count>0){
-        if(self.barImgs.count>self.index){
-            //_imgBar.image = [UIImage imageWithData:[self.barImgs objectAtIndex:self.index]];
-        }
-    }
-    
     NSError* error = nil;
     ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
     ZXBitMatrix* result = [writer encode:[self.cpfs objectAtIndex:self.index]
-                                  format:kBarcodeFormatCodabar
+                                  format:kBarcodeFormatCode128
                                    width:self.view.bounds.size.width
                                   height:self.view.bounds.size.height/3
                                    error:&error];
@@ -93,12 +71,6 @@
     } else {
         NSString* errorMessage = [error localizedDescription];
     }
-    
-//    ---IMPLEMENTING VIA FONT BARCODE-----
-    
-//    self.lblBar.font = [UIFont fontWithName:@"IDAutomationHC39M" size:22.0];
-//    self.lblBar.text = [NSString stringWithFormat:@"(%@)",[self.cpfs objectAtIndex:self.index]];
-    
     
 	// Do any additional setup after loading the view.
     // Initialize the banner at the bottom of the screen.
@@ -166,19 +138,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (void) bannerViewDidLoadAd:(ADBannerView *)banner{
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:1];
-//    [banner setAlpha:1];
-//    [UIView commitAnimations];
-//}
-//
-//-(void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:1];
-//    [banner setAlpha:0];
-//    [UIView commitAnimations];
-//}
 
 @end
