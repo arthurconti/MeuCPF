@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F37D65D-73D7-40A3-A0EA-5196EF91F256</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Meu CPF</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</key>
+		<string>https://github.com/arthurconti/MeuCPF.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Meu CPF.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/arthurconti/MeuCPF.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MeuCPF</string>
+		</dict>
+	</array>
+</dict>
+</plist>
