@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 #import "GADBannerViewDelegate.h"
+#import "GAITrackedViewController.h"
 
 @class GADBannerView;
 @class GADRequest;
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,ADBannerViewDelegate, GADBannerViewDelegate>
+@interface ViewController :  GAITrackedViewController <UITableViewDelegate, UITableViewDataSource,ADBannerViewDelegate, GADBannerViewDelegate>
 
 @property(nonatomic, strong) GADBannerView *adBanner;
 

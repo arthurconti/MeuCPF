@@ -105,11 +105,12 @@ const int MAXLENGTHCPF = 11;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
+    [super viewWillAppear:animated];
+    self.screenName = @"CPFs Screen";
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSArray *tempArray =[defaults objectForKey:@"CPFS_RECORDED"];
-    NSArray *tempArray2 =[defaults objectForKey:@"CPF_IMAGES"];
     
     if(tempArray){
         self.cpfs = [tempArray mutableCopy];

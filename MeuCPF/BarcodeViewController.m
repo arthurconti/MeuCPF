@@ -92,8 +92,6 @@
     [btnDelete setTintColor:[UIColor whiteColor]];
     
     self.navigationItem.rightBarButtonItem = btnDelete;
-    
-    [[UIScreen mainScreen] setBrightness: 1.0];
 }
 
 - (NSString *) formatCPF: (NSString *) cpf{
@@ -137,6 +135,11 @@
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.screenName = @"Barcode Screen";
 }
 
 @end
