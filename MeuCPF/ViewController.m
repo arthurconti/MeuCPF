@@ -7,10 +7,10 @@
 //
 
 #import "ViewController.h"
-#import <iAd/iAd.h>
 #import "BarcodeViewController.h"
 #import "GADBannerView.h"
 #import "GADRequest.h"
+#import "CPF.h"
 
 @interface ViewController ()
 @property int alertType;
@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblVazio;
 @property (weak, nonatomic) IBOutlet UILabel *lblCadastrados;
 @property NSInteger index;
-@property UITextField *txt;
+@property UITextField *txtCPF;
+@property UITextField *txtName;
 @property (nonatomic, strong) UIAlertView *alertview;
 @property (strong,nonatomic) NSString *cpfTyped;
 
@@ -37,6 +38,42 @@ const int MAXLENGTHCPF = 11;
 
 
 -(void) viewDidLoad{
+    [self loadAds];
+    
+    //UIImage *image = [UIImage imageNamed:@"lock.png"];
+    //UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    //[button addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    //[button setBackgroundImage:image forState:UIControlStateNormal];
+    //button.frame = CGRectMake(0 ,0,20,20);
+    //UIBarButtonItem *btnLock = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    //[self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnAdd, btnLock, nil]];
+    
+    UIBarButtonItem *btnAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCPF:)];
+    [btnAdd setTintColor:[UIColor whiteColor]];
+    
+    self.navigationItem.rightBarButtonItem = btnAdd;
+}
+
+- (void)dealloc {
+    _adBanner.delegate = nil;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (void) addDeleteButton{
+    UIBarButtonItem *btnDeleteAll = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removeAll:)];
+    [btnDeleteAll setTintColor:[UIColor whiteColor]];
+    
+    if(self.cpfs.count>0)
+        self.navigationItem.leftBarButtonItem = btnDeleteAll;
+    else
+        self.navigationItem.leftBarButtonItem = nil;
+}
+
+- (void) loadAds{
     // Initialize the banner at the bottom of the screen.
     CGPoint origin = CGPointMake(0.0,
                                  self.view.frame.size.height -
@@ -51,33 +88,6 @@ const int MAXLENGTHCPF = 11;
     self.adBanner.rootViewController = self;
     [self.view addSubview:self.adBanner];
     [self.adBanner loadRequest:[self request]];
-    
-    UIBarButtonItem *btnDeleteAll = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removeAll:)];
-    [btnDeleteAll setTintColor:[UIColor whiteColor]];
-    
-    UIBarButtonItem *btnAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addCPF:)];
-    [btnAdd setTintColor:[UIColor whiteColor]];
-    
-    UIImage *image = [UIImage imageNamed:@"lock.png"];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    button.frame = CGRectMake(0 ,0,20,20);
-    //UIBarButtonItem *btnLock = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
-    //[self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:btnAdd, btnLock, nil]];
-    self.navigationItem.rightBarButtonItem = btnAdd;
-    
-    if(self.cpfs.count>0)
-        self.navigationItem.leftBarButtonItem = btnDeleteAll;
-}
-
-- (void)dealloc {
-    _adBanner.delegate = nil;
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark GADRequest generation
@@ -108,9 +118,8 @@ const int MAXLENGTHCPF = 11;
     [super viewWillAppear:animated];
     self.screenName = @"CPFs Screen";
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSArray *tempArray =[defaults objectForKey:@"CPFS_RECORDED"];
+    NSData *cpfData = [[NSUserDefaults standardUserDefaults] objectForKey:@"CPFS_LIST_RECORDED"];
+    NSArray *tempArray = [NSKeyedUnarchiver unarchiveObjectWithData:cpfData];
     
     if(tempArray){
         self.cpfs = [tempArray mutableCopy];
@@ -131,6 +140,7 @@ const int MAXLENGTHCPF = 11;
 
 - (void) updateUI{
     [self.myTableView reloadData];
+    self.myTableView.backgroundColor = [UIColor clearColor];
     
     if([self.cpfs count]>0){
         self.myTableView.hidden=false;
@@ -143,24 +153,14 @@ const int MAXLENGTHCPF = 11;
         self.lblVazio.hidden = false;
     }
     
-    UIBarButtonItem *btnDeleteAll = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(removeAll:)];
-    [btnDeleteAll setTintColor:[UIColor whiteColor]];
-    
-    if(self.cpfs.count>0)
-        self.navigationItem.leftBarButtonItem = btnDeleteAll;
-    else
-        self.navigationItem.leftBarButtonItem = nil;
-    //to make table at content size
-    //    CGRect frame = self.myTableView.frame;
-    //    frame.size.height = self.myTableView.contentSize.height;
-    //    self.myTableView.frame = frame;
+    [self addDeleteButton];
 }
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
-    if ([self.txt.text length] >= MAXLENGTHCPF) {
-        self.txt.text = [textField.text substringToIndex:MAXLENGTHCPF-1];
+    if ([self.txtCPF.text length] >= MAXLENGTHCPF) {
+        self.txtCPF.text = [textField.text substringToIndex:MAXLENGTHCPF-1];
         return NO;
     }
     return YES;
@@ -190,7 +190,7 @@ const int MAXLENGTHCPF = 11;
     switch (tipo) {
         case 5:
             title = @"Cadastro de CPF";
-            message = @"Digite seu CPF abaixo";
+            message = @"Digite seus dados abaixo";
             canceltitle = @"Cancelar";
             oktitle = @"Adicionar";
             break;
@@ -213,13 +213,20 @@ const int MAXLENGTHCPF = 11;
                                           otherButtonTitles:oktitle, nil];
     switch (tipo) {
         case 5:
-            [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-            self.txt =  [alert textFieldAtIndex:0];
-            [self.txt setKeyboardType:UIKeyboardTypeNumberPad];
-            [self.txt setPlaceholder:@"000.000.000-00"];
-            [self.txt setTextAlignment:NSTextAlignmentCenter];
-            [self.txt setTag:2];
-            [self.txt setDelegate:self];
+            [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+            self.txtName = [alert textFieldAtIndex:0];
+            [self.txtName setPlaceholder:@"Digite seu nome"];
+            [self.txtName setTextAlignment:NSTextAlignmentCenter];
+            self.txtName.autocapitalizationType = UITextAutocapitalizationTypeWords;
+            //            [self.txtCPF setTag:2];
+            
+            self.txtCPF =  [alert textFieldAtIndex:1];
+            [self.txtCPF setSecureTextEntry:NO];
+            [self.txtCPF setKeyboardType:UIKeyboardTypeNumberPad];
+            [self.txtCPF setPlaceholder:@"000.000.000-00"];
+            [self.txtCPF setTextAlignment:NSTextAlignmentCenter];
+            [self.txtCPF setDelegate:self];
+            //            [self.txtCPF setTag:2];
             [alert setTag:1];
             break;
             
@@ -231,23 +238,42 @@ const int MAXLENGTHCPF = 11;
     
     [alert show];
     
+    //    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+    //        self.view.backgroundColor = [UIColor clearColor];
+    //        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    //        UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    //        blurEffectView.frame = self.view.frame;
+    //        [self.view addSubview:blurEffectView];
+    //
+    //        [blurEffectView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    //        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:blurEffectView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+    //        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:blurEffectView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    //        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:blurEffectView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1 constant:0]];
+    //        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:blurEffectView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1 constant:0]];
+    //    }  else {
+    //        self.view.backgroundColor = [UIColor blackColor];
+    //    }
+    
 }
 
 //Retrieve answer from AlertView
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    NSString *txt;
+    NSString *txtCpf;
+    NSString *txtName;
     
-    if(alertView.tag==1)
-        txt = [alertView textFieldAtIndex:0].text;
+    if(alertView.tag==1){
+        txtName = [alertView textFieldAtIndex:0].text;
+        txtCpf = [alertView textFieldAtIndex:1].text;
+    }
     
     switch (self.alertType) {
             
         case 5:
             if(buttonIndex!=0){
-                if([self validateCPFWithNSString:txt]){
-                    if([self validateDuplicatedCPF:txt]){
-                    [self addValidCPF:txt];
+                if([self validateCPFWithNSString:txtCpf]){
+                    if([self validateDuplicatedCPF:txtCpf]){
+                        [self addValidCPF:txtName :txtCpf];
                     }
                     else{
                         self.alertType=7;
@@ -275,7 +301,7 @@ const int MAXLENGTHCPF = 11;
             if(buttonIndex!=0){
                 self.cpfs = nil;
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:nil forKey:@"CPFS_RECORDED"];
+                [defaults setObject:nil forKey:@"CPFS_LIST_RECORDED"];
                 [defaults synchronize];
             }
             break;
@@ -284,10 +310,14 @@ const int MAXLENGTHCPF = 11;
 }
 
 //add to arrays the valid CPF
-- (void) addValidCPF:(NSString *) txt{
+- (void) addValidCPF:(NSString *) name :(NSString *) cpf{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [self.cpfs addObject:txt];
-    [defaults setObject:self.cpfs forKey:@"CPFS_RECORDED"];
+    CPF *myCpf = [[CPF alloc] init];
+    myCpf.name = name;
+    myCpf.cpf = cpf;
+    [self.cpfs addObject:myCpf];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cpfs];
+    [defaults setObject:data forKey:@"CPFS_LIST_RECORDED"];
     [defaults synchronize];
 }
 
@@ -297,6 +327,17 @@ const int MAXLENGTHCPF = 11;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.index = [indexPath row];
     [self performSegueWithIdentifier:@"LoadCPF" sender:nil];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Cadastrados";
 }
 
 // This will get called too before the view appears
@@ -320,13 +361,15 @@ const int MAXLENGTHCPF = 11;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
     }
-    NSString *txtWithoutFormat = [self.cpfs objectAtIndex:indexPath.row];
-    cell.textLabel.text = [self formatCPF:txtWithoutFormat];
+    CPF *cpfObject = [self.cpfs objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [self formatCPF:cpfObject.cpf];
+    cell.textLabel.text = cpfObject.name;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
@@ -371,7 +414,8 @@ const int MAXLENGTHCPF = 11;
     BOOL notfound = YES;
     if(self.cpfs.count>0){
         for(int i=0;i<self.cpfs.count;i++){
-            if([cpf isEqualToString:[self.cpfs objectAtIndex:i]]){
+            CPF *cpfObject = [self.cpfs objectAtIndex:i];
+            if([cpf isEqualToString:cpfObject.cpf]){
                 notfound=NO;
                 break;
             }

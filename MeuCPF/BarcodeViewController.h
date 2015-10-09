@@ -14,7 +14,7 @@
 @class GADBannerView;
 @class GADRequest;
 
-@interface BarcodeViewController : GAITrackedViewController <GADBannerViewDelegate>
+@interface BarcodeViewController : GAITrackedViewController <GADBannerViewDelegate,ADBannerViewDelegate>
 
 @property(nonatomic, strong) GADBannerView *adBanner;
 @property  NSInteger index;

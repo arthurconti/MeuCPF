@@ -10,6 +10,7 @@
 #import "GADBannerView.h"
 #import "GADRequest.h"
 #import "ZXingObjC.h"
+#import "CPF.h"
 
 @interface BarcodeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imgBar;
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray *barImgs;
 @property (weak, nonatomic) IBOutlet UILabel *lblBar;
 @property (weak, nonatomic) IBOutlet UILabel *lblCPF;
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
 
 @end
 
@@ -38,7 +40,8 @@
     if(buttonIndex!=0){
         [self.cpfs removeObject:[self.cpfs objectAtIndex:index]];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:self.cpfs forKey:@"CPFS_RECORDED"];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.cpfs];
+        [defaults setObject:data forKey:@"CPFS_LIST_RECORDED"];
         [defaults synchronize];
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -46,9 +49,11 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSArray *tempArray = [defaults objectForKey:@"CPFS_RECORDED"];
+    [self loadAds];
+    
+    NSData *cpfsData = [[NSUserDefaults standardUserDefaults] objectForKey:@"CPFS_LIST_RECORDED"];
+    NSArray *tempArray = [NSKeyedUnarchiver unarchiveObjectWithData:cpfsData];
     
     if (tempArray) {
         self.cpfs = [tempArray mutableCopy];
@@ -58,7 +63,8 @@
     
     NSError* error = nil;
     ZXMultiFormatWriter* writer = [ZXMultiFormatWriter writer];
-    ZXBitMatrix* result = [writer encode:[self.cpfs objectAtIndex:self.index]
+    CPF *cpf = [self.cpfs objectAtIndex:self.index];
+    ZXBitMatrix* result = [writer encode:cpf.cpf
                                   format:kBarcodeFormatCode128
                                    width:self.view.bounds.size.width
                                   height:self.view.bounds.size.height/3
@@ -66,13 +72,27 @@
     if (result) {
         CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
         self.imgBar.image = [[UIImage alloc] initWithCGImage:image];
-        self.lblCPF.text = [self formatCPF:[self.cpfs objectAtIndex:self.index]];
+        self.lblCPF.text = [self formatCPF:cpf.cpf];
+        self.lblName.text = cpf.name;
         // This CGImageRef image can be placed in a UIImage, NSImage, or written to a file.
     } else {
         NSString* errorMessage = [error localizedDescription];
     }
     
-	// Do any additional setup after loading the view.
+    
+    UIBarButtonItem *btnDelete = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteCPF:)];
+    [btnDelete setTintColor:[UIColor whiteColor]];
+    
+    self.navigationItem.rightBarButtonItem = btnDelete;
+}
+
+- (NSString *) formatCPF: (NSString *) cpf{
+    NSString *cpfFormatado = [NSString stringWithFormat:@"%@.%@.%@-%@",[cpf substringWithRange:NSMakeRange(0, 3)],[cpf substringWithRange:NSMakeRange(3,3)],[cpf substringWithRange:NSMakeRange(6, 3)],[cpf substringWithRange:NSMakeRange(9, 2)]];
+    
+    return cpfFormatado;
+}
+
+- (void) loadAds{
     // Initialize the banner at the bottom of the screen.
     CGPoint origin = CGPointMake(0.0,
                                  self.view.frame.size.height -
@@ -87,17 +107,6 @@
     self.adBanner.rootViewController = self;
     [self.view addSubview:self.adBanner];
     [self.adBanner loadRequest:[self request]];
-    
-    UIBarButtonItem *btnDelete = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteCPF:)];
-    [btnDelete setTintColor:[UIColor whiteColor]];
-    
-    self.navigationItem.rightBarButtonItem = btnDelete;
-}
-
-- (NSString *) formatCPF: (NSString *) cpf{
-    NSString *cpfFormatado = [NSString stringWithFormat:@"%@.%@.%@-%@",[cpf substringWithRange:NSMakeRange(0, 3)],[cpf substringWithRange:NSMakeRange(3,3)],[cpf substringWithRange:NSMakeRange(6, 3)],[cpf substringWithRange:NSMakeRange(9, 2)]];
-    
-    return cpfFormatado;
 }
 
 - (void)dealloc {

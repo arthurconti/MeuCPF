@@ -10,29 +10,29 @@
 	<string>Meu CPF</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</key>
+		<key>3E45C893A42DBBEF089309DC847FCB15F4359547</key>
 		<string>https://github.com/arthurconti/MeuCPF.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Meu CPF.xcodeproj/project.xcworkspace</string>
+	<string>Meu CPF.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</key>
+		<key>3E45C893A42DBBEF089309DC847FCB15F4359547</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/arthurconti/MeuCPF.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</string>
+	<string>3E45C893A42DBBEF089309DC847FCB15F4359547</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>B7AEC3D1-F253-4FBA-B0D5-7B6EFE5F692B</string>
+			<string>3E45C893A42DBBEF089309DC847FCB15F4359547</string>
 			<key>IDESourceControlWCCName</key>
 			<string>MeuCPF</string>
 		</dict>

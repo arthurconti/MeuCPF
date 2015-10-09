@@ -7,24 +7,23 @@
 //
 
 #import "AppDelegate.h"
-#import "GAI.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker. Replace with your tracking ID.
-    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50022715-1"];
+//    // Override point for customization after application launch.
+//    // Optional: automatically send uncaught exceptions to Google Analytics.
+//    [GAI sharedInstance].trackUncaughtExceptions = YES;
+//    
+//    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+//    [GAI sharedInstance].dispatchInterval = 20;
+//    
+//    // Optional: set Logger to VERBOSE for debug information.
+//    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+//    
+//    // Initialize tracker. Replace with your tracking ID.
+//    [[GAI sharedInstance] trackerWithTrackingId:@"UA-50022715-1"];
     
     // Override point for customization after application launch.
     UIPageControl *pageControl = [UIPageControl appearance];
@@ -32,8 +31,9 @@
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     pageControl.backgroundColor = [UIColor clearColor];
     
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL noTutorial = [defaults boolForKey:@"Tutorial"];
+    BOOL noTutorial = [defaults boolForKey:@"Tutorial2"];
     
     if(noTutorial){
         UIStoryboard *storyboard = self.window.rootViewController.storyboard;

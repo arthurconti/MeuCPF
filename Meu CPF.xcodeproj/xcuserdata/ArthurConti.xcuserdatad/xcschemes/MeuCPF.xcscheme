@@ -17,7 +17,7 @@
                BlueprintIdentifier = "31BAB1CC18AD3F8800B5D2E8"
                BuildableName = "MeuCPF.app"
                BlueprintName = "MeuCPF"
-               ReferencedContainer = "container:MeuCPF.xcodeproj">
+               ReferencedContainer = "container:Meu CPF.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "31BAB1ED18AD3F8800B5D2E8"
                BuildableName = "MeuCPFTests.xctest"
                BlueprintName = "MeuCPFTests"
-               ReferencedContainer = "container:MeuCPF.xcodeproj">
+               ReferencedContainer = "container:Meu CPF.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "31BAB1CC18AD3F8800B5D2E8"
             BuildableName = "MeuCPF.app"
             BlueprintName = "MeuCPF"
-            ReferencedContainer = "container:MeuCPF.xcodeproj">
+            ReferencedContainer = "container:Meu CPF.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -54,7 +54,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "31BAB1CC18AD3F8800B5D2E8"
             BuildableName = "MeuCPF.app"
             BlueprintName = "MeuCPF"
-            ReferencedContainer = "container:MeuCPF.xcodeproj">
+            ReferencedContainer = "container:Meu CPF.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -82,7 +82,7 @@
             BlueprintIdentifier = "31BAB1CC18AD3F8800B5D2E8"
             BuildableName = "MeuCPF.app"
             BlueprintName = "MeuCPF"
-            ReferencedContainer = "container:MeuCPF.xcodeproj">
+            ReferencedContainer = "container:Meu CPF.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

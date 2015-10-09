@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
     
-    _pageTitles = @[@"Usando o Meu CPF",@"Para cadastrar um CPF, clique em +", @"Digite o CPF e clique em Adicionar", @"Para utilizar, clique em qualquer CPF", @"Passe o leitor na tela e Pronto!"];
+    _pageTitles = @[@"Usando o Meu CPF",@"Para cadastrar um CPF, clique em +", @"Digite Nome, CPF e clique em Adicionar", @"Para utilizar, clique em qualquer CPF", @"Passe o leitor na tela e Pronto!"];
     _pageImages = @[@"page0.png",@"page1.png", @"page2.png", @"page3.png", @"page4.png"];
     
     // Create page view controller
@@ -109,7 +109,7 @@
     if(buttonIndex!=0){
         //gravar nas prefs que nao quer mais tutorial
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setBool:YES forKey:@"Tutorial"];
+        [defaults setBool:YES forKey:@"Tutorial2"];
         [defaults synchronize];
         [self performSegueWithIdentifier:@"Inicio" sender:nil];
     }
