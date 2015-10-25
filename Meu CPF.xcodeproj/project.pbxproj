@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		310894FF18C00AEB00838CA7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310894FE18C00AEB00838CA7 /* iAd.framework */; };
 		310D596018EB92E200C02B88 /* IDAutomationHC39M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 310D595F18EB92E200C02B88 /* IDAutomationHC39M.ttf */; };
 		310D596318ED9AB300C02B88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 310D596118ED9AB300C02B88 /* Main.storyboard */; };
 		3110C9051BC759750006A9A3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3110C9041BC759750006A9A3 /* EventKit.framework */; };
@@ -231,7 +230,6 @@
 		31987B2118D6031F00965134 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2018D6031F00965134 /* AVFoundation.framework */; };
 		31987B2318D6032A00965134 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2218D6032A00965134 /* CoreTelephony.framework */; };
 		31987B2518D6033400965134 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2418D6033400965134 /* SystemConfiguration.framework */; };
-		31987B2A18D9BEF100965134 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2918D9BEF100965134 /* StoreKit.framework */; };
 		31B619BD1907509D002ABBF0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31B619BC1907509D002ABBF0 /* Images.xcassets */; };
 		31BAB1D118AD3F8800B5D2E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BAB1D018AD3F8800B5D2E8 /* Foundation.framework */; };
 		31BAB1D318AD3F8800B5D2E8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31BAB1D218AD3F8800B5D2E8 /* CoreGraphics.framework */; };
@@ -248,6 +246,7 @@
 		31CE403A190729B500CB61A3 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CE4039190729B500CB61A3 /* PageContentViewController.m */; };
 		31CE403D19072C9300CB61A3 /* PageControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CE403C19072C9300CB61A3 /* PageControlViewController.m */; };
 		31E129D41B63BF4E00B2E16A /* CPF.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E129D31B63BF4E00B2E16A /* CPF.m */; };
+		31F65BE51BD5C4780040C702 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F65BE41BD5C4780040C702 /* StoreKit.framework */; };
 		C31E9E4718ED8FE800B745CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9E3C18ED8FE800B745CA /* AppDelegate.m */; };
 		C31E9E4818ED8FE800B745CA /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9E3E18ED8FE800B745CA /* BarcodeViewController.m */; };
 		C31E9E4C18ED8FE800B745CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9E4618ED8FE800B745CA /* ViewController.m */; };
@@ -732,7 +731,6 @@
 		31987B2018D6031F00965134 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		31987B2218D6032A00965134 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		31987B2418D6033400965134 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		31987B2918D9BEF100965134 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		31B619BC1907509D002ABBF0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MeuCPF/Images.xcassets; sourceTree = "<group>"; };
 		31BAB1CD18AD3F8800B5D2E8 /* MeuCPF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeuCPF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31BAB1D018AD3F8800B5D2E8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -756,6 +754,7 @@
 		31CE403C19072C9300CB61A3 /* PageControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageControlViewController.m; path = MeuCPF/PageControlViewController.m; sourceTree = SOURCE_ROOT; };
 		31E129D31B63BF4E00B2E16A /* CPF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPF.m; path = MeuCPF/CPF.m; sourceTree = SOURCE_ROOT; };
 		31E129D51B63BF6700B2E16A /* CPF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CPF.h; path = MeuCPF/CPF.h; sourceTree = SOURCE_ROOT; };
+		31F65BE41BD5C4780040C702 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		C31E9E3B18ED8FE800B745CA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MeuCPF/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C31E9E3C18ED8FE800B745CA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MeuCPF/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		C31E9E3D18ED8FE800B745CA /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarcodeViewController.h; path = MeuCPF/BarcodeViewController.h; sourceTree = SOURCE_ROOT; };
@@ -783,10 +782,9 @@
 				3110C9321BC75D4B0006A9A3 /* libGoogleAdMobAds.a in Frameworks */,
 				31987B2318D6032A00965134 /* CoreTelephony.framework in Frameworks */,
 				31987B2118D6031F00965134 /* AVFoundation.framework in Frameworks */,
-				31987B2A18D9BEF100965134 /* StoreKit.framework in Frameworks */,
 				31987B1D18D5FF3500965134 /* AudioToolbox.framework in Frameworks */,
+				31F65BE51BD5C4780040C702 /* StoreKit.framework in Frameworks */,
 				31987B1B18D5FF2D00965134 /* MessageUI.framework in Frameworks */,
-				310894FF18C00AEB00838CA7 /* iAd.framework in Frameworks */,
 				31BAB1D318AD3F8800B5D2E8 /* CoreGraphics.framework in Frameworks */,
 				3110C9331BC75D4B0006A9A3 /* libGoogleAnalyticsServices.a in Frameworks */,
 				31BAB1D518AD3F8800B5D2E8 /* UIKit.framework in Frameworks */,
@@ -1600,6 +1598,7 @@
 		31BAB1CF18AD3F8800B5D2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31F65BE41BD5C4780040C702 /* StoreKit.framework */,
 				3110C9061BC7597D0006A9A3 /* EventKitUI.framework */,
 				3110C9041BC759750006A9A3 /* EventKit.framework */,
 				317D0A9F1B018F22000E2A55 /* Accelerate.framework */,
@@ -1609,7 +1608,6 @@
 				31443D8B18FC784B00E8A31E /* ImageIO.framework */,
 				31443D8918FC784200E8A31E /* CoreVideo.framework */,
 				31443D8718FC783A00E8A31E /* CoreMedia.framework */,
-				31987B2918D9BEF100965134 /* StoreKit.framework */,
 				31987B2418D6033400965134 /* SystemConfiguration.framework */,
 				31987B2218D6032A00965134 /* CoreTelephony.framework */,
 				31987B2018D6031F00965134 /* AVFoundation.framework */,
@@ -2092,6 +2090,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Arthur Jardim Giareta Conti (RGE48GKZE3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2133,6 +2132,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Arthur Jardim Giareta Conti (RGE48GKZE3)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
