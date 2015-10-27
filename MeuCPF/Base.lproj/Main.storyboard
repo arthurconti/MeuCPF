@@ -359,25 +359,6 @@
             </objects>
             <point key="canvasLocation" x="-331" y="-27"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="naB-ck-iBv">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="nb5-Qv-Ss6" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vTu-D2-XBf"/>
-                        <viewControllerLayoutGuide type="bottom" id="YWj-GF-WIP"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JxV-IQ-jQ8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IbG-IL-emH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="bg" width="640" height="920"/>

@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
 #import "GADBannerViewDelegate.h"
 #import "GAITrackedViewController.h"
 
 @class GADBannerView;
 @class GADRequest;
 
-@interface BarcodeViewController : GAITrackedViewController <GADBannerViewDelegate,ADBannerViewDelegate>
+@interface BarcodeViewController : GAITrackedViewController <GADBannerViewDelegate>
 
 @property(nonatomic, strong) GADBannerView *adBanner;
 @property  NSInteger index;

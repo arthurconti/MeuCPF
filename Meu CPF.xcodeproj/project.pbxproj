@@ -226,7 +226,6 @@
 		317D0AA01B018F22000E2A55 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 317D0A9F1B018F22000E2A55 /* Accelerate.framework */; };
 		31987B1B18D5FF2D00965134 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B1A18D5FF2D00965134 /* MessageUI.framework */; };
 		31987B1D18D5FF3500965134 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B1C18D5FF3500965134 /* AudioToolbox.framework */; };
-		31987B1F18D6031600965134 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B1E18D6031600965134 /* AdSupport.framework */; };
 		31987B2118D6031F00965134 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2018D6031F00965134 /* AVFoundation.framework */; };
 		31987B2318D6032A00965134 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2218D6032A00965134 /* CoreTelephony.framework */; };
 		31987B2518D6033400965134 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31987B2418D6033400965134 /* SystemConfiguration.framework */; };
@@ -247,6 +246,7 @@
 		31CE403D19072C9300CB61A3 /* PageControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 31CE403C19072C9300CB61A3 /* PageControlViewController.m */; };
 		31E129D41B63BF4E00B2E16A /* CPF.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E129D31B63BF4E00B2E16A /* CPF.m */; };
 		31F65BE51BD5C4780040C702 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F65BE41BD5C4780040C702 /* StoreKit.framework */; };
+		31F9FD271BE0121C00169965 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31F9FD261BE0121C00169965 /* AdSupport.framework */; };
 		C31E9E4718ED8FE800B745CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9E3C18ED8FE800B745CA /* AppDelegate.m */; };
 		C31E9E4818ED8FE800B745CA /* BarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9E3E18ED8FE800B745CA /* BarcodeViewController.m */; };
 		C31E9E4C18ED8FE800B745CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E9E4618ED8FE800B745CA /* ViewController.m */; };
@@ -263,7 +263,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		310894FE18C00AEB00838CA7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		310D595F18EB92E200C02B88 /* IDAutomationHC39M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IDAutomationHC39M.ttf; sourceTree = "<group>"; };
 		310D596218ED9AB300C02B88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3110C9041BC759750006A9A3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -727,7 +726,6 @@
 		317D0A9F1B018F22000E2A55 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		31987B1A18D5FF2D00965134 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		31987B1C18D5FF3500965134 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		31987B1E18D6031600965134 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		31987B2018D6031F00965134 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		31987B2218D6032A00965134 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		31987B2418D6033400965134 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -755,6 +753,7 @@
 		31E129D31B63BF4E00B2E16A /* CPF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPF.m; path = MeuCPF/CPF.m; sourceTree = SOURCE_ROOT; };
 		31E129D51B63BF6700B2E16A /* CPF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CPF.h; path = MeuCPF/CPF.h; sourceTree = SOURCE_ROOT; };
 		31F65BE41BD5C4780040C702 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		31F9FD261BE0121C00169965 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C31E9E3B18ED8FE800B745CA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MeuCPF/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C31E9E3C18ED8FE800B745CA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MeuCPF/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		C31E9E3D18ED8FE800B745CA /* BarcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarcodeViewController.h; path = MeuCPF/BarcodeViewController.h; sourceTree = SOURCE_ROOT; };
@@ -768,11 +767,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F9FD271BE0121C00169965 /* AdSupport.framework in Frameworks */,
 				3110C9071BC7597D0006A9A3 /* EventKitUI.framework in Frameworks */,
 				3110C9051BC759750006A9A3 /* EventKit.framework in Frameworks */,
 				317D0AA01B018F22000E2A55 /* Accelerate.framework in Frameworks */,
 				31443E6A18FD6FA900E8A31E /* libz.dylib in Frameworks */,
-				31987B1F18D6031600965134 /* AdSupport.framework in Frameworks */,
 				31443E6918FD6F6F00E8A31E /* CoreData.framework in Frameworks */,
 				31443D8E18FC785200E8A31E /* QuartzCore.framework in Frameworks */,
 				31443D8C18FC784B00E8A31E /* ImageIO.framework in Frameworks */,
@@ -1598,6 +1597,7 @@
 		31BAB1CF18AD3F8800B5D2E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31F9FD261BE0121C00169965 /* AdSupport.framework */,
 				31F65BE41BD5C4780040C702 /* StoreKit.framework */,
 				3110C9061BC7597D0006A9A3 /* EventKitUI.framework */,
 				3110C9041BC759750006A9A3 /* EventKit.framework */,
@@ -1611,10 +1611,8 @@
 				31987B2418D6033400965134 /* SystemConfiguration.framework */,
 				31987B2218D6032A00965134 /* CoreTelephony.framework */,
 				31987B2018D6031F00965134 /* AVFoundation.framework */,
-				31987B1E18D6031600965134 /* AdSupport.framework */,
 				31987B1C18D5FF3500965134 /* AudioToolbox.framework */,
 				31987B1A18D5FF2D00965134 /* MessageUI.framework */,
-				310894FE18C00AEB00838CA7 /* iAd.framework */,
 				31BAB1D018AD3F8800B5D2E8 /* Foundation.framework */,
 				31BAB1D218AD3F8800B5D2E8 /* CoreGraphics.framework */,
 				31BAB1D418AD3F8800B5D2E8 /* UIKit.framework */,
